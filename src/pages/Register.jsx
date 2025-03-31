@@ -142,7 +142,7 @@ export default function Register() {
             {otpSent && !otpVerified && !registered ? `OTP sent succesfully`:""} 
             {otpSent && otpVerified && !registered ? `OTP verified succesfully`:""} 
             <div className="bg-white w-[75%] shadow-md rounded px-8 pt-6 pb-8 mb-4">
-                <h2 className="text-2xl font-bold text-left mb-4 text-purple-700">Welcome to TheNexStep</h2>
+                <h2 className="text-2xl font-bold text-left mb-4 text-blue-700">Welcome to TheNexStep</h2>
                 <h2 className="font-bold text-left mb-4">Start your journey . . .</h2>
 
                 {/* Step 1: Email Input for OTP */}
@@ -161,7 +161,7 @@ export default function Register() {
                         {error && <p className="text-red-500 text-xs italic mb-4">{error}</p>}
                         <button
                             type="submit"
-                            className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 w-full rounded-md hover:scale-105 transition-all hover:cursor-pointer"
+                            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 w-full rounded-md hover:scale-105 transition-all hover:cursor-pointer"
                             disabled={loading}
                         >
                             {loading ? "Sending OTP..." : "Send OTP"}
@@ -185,7 +185,7 @@ export default function Register() {
                         {error && <p className="text-red-500 text-xs italic mb-4">{error}</p>}
                         <button
                             type="submit"
-                            className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 w-full rounded-md hover:scale-105 transition-all hover:cursor-pointer"
+                            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 w-full rounded-md hover:scale-105 transition-all hover:cursor-pointer"
                             disabled={loading}
                         >
                             {loading ? "Verifying..." : "Verify OTP"}
@@ -208,7 +208,7 @@ export default function Register() {
                         </select>
                         <input type="password" className="shadow border rounded w-full py-3 px-3 text-gray-700 focus:outline-none focus:shadow-outline my-2 hover:scale-110 transition-all duration-300 ease-in-out" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" required />
                         {error && <p className="text-red-500">{error}</p>}
-                        <button type="submit" className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 w-full rounded-md hover:scale-105 transition-all hover:cursor-pointer">
+                        <button type="submit" className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 w-full rounded-md hover:scale-105 transition-all hover:cursor-pointer">
                             {loading ? "Registering..." : "Register"}
                         </button>
                     </form>

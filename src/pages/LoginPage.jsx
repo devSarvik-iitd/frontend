@@ -63,7 +63,7 @@ const LoginPage = () => {
             {/* Left Section - Illustration */}
             <div className="w-1/2 flex flex-col items-center justify-center p-10">
                 <img src="/illustration.png" alt="Students studying" className="w-3/4" />
-                <button className="mt-6 bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-6 rounded text-lg">
+                <button className="mt-6 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded text-lg">
                     SIGN UP
                 </button>
             </div>
@@ -71,7 +71,7 @@ const LoginPage = () => {
             {/* Right Section - Login Form */}
             <div className="w-1/2 flex flex-col items-center justify-center">
                 <div className="bg-white w-[75%] shadow-md rounded px-8 pt-6 pb-8 mb-4 ">
-                    <h2 className="text-2xl font-bold text-left mb-4 text-purple-700">
+                    <h2 className="text-2xl font-bold text-left mb-4 text-blue-700">
                         Welcome to TheNexStep
                     </h2>
                     <h2 className=" font-bold text-left mb-4">
@@ -104,13 +104,13 @@ const LoginPage = () => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-3 px-4 focus:outline-none focus:shadow-outline w-full hover:cursor-pointer rounded-md hover:scale-105 transition-all duration-300 ease-in-out"
+                            className="bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-4 focus:outline-none focus:shadow-outline w-full hover:cursor-pointer rounded-md hover:scale-105 transition-all duration-300 ease-in-out"
                         >
                             Login
                         </button>
                     </form>
                     <p className="text-center text-sm text-gray-600 mt-4">
-                        Don't have an account? <Link to="/register" className="text-purple-700 hover:text-purple-900">Register</Link>
+                        Don't have an account? <Link to="/register" className="text-blue-700 hover:text-blue-900">Register</Link>
                     </p>
                 </div>
             </div>

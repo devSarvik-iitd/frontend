@@ -1,10 +1,17 @@
 import { useState } from "react";
 import { Link } from "react-scroll";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
+  const navigateToLogin = () =>{
+    navigate('/login');
+  }
+  const navigateToRegister = () =>{
+    navigate('/register');
+  }
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
@@ -40,10 +47,10 @@ const Navbar = () => {
 
         {/* Login & Signup Buttons */}
         <div className="hidden md:flex space-x-4">
-          <button className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
+          <button onClick={navigateToLogin} className="bg-gray-200 hover:cursor-pointer text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
             Login
           </button>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
+          <button onClick={navigateToRegister} className="bg-blue-600 hover:cursor-pointer text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
             Signup
           </button>
         </div>
@@ -69,10 +76,10 @@ const Navbar = () => {
           </Link>
           {/* Mobile Login & Signup Buttons */}
           <div className="mt-4 flex flex-col space-y-2">
-            <button className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
+            <button onClick={navigateToLogin} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
               Login
             </button>
-            <button className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
+            <button onClick={navigateToRegister} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
               Signup
             </button>
           </div>
