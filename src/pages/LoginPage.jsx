@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
+import config from '../config';
 
 const LoginPage = () => {
   // Google client ID - replace this with your own client ID from Google Developer Console
@@ -10,7 +11,7 @@ const LoginPage = () => {
   const handleLoginSuccess = async (response) => {
     try {
       // Send the received Google token to your backend API
-      const { data } = await axios.post('http://localhost:8000/auth/login', {
+      const { data } = await axios.post(`${config.baseURL}/auth/login`, {
         token: response.credential,
       });
 
