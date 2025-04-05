@@ -18,8 +18,8 @@ const HowItWorks = () => {
                         <div className="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-4">
                             <span className="text-blue-600 text-3xl font-bold">2</span>
                         </div>
-                        <h3 className="text-xl font-semibold mb-2">Get Matched</h3>
-                        <p className="text-gray-600">We connect you with an IITian or expert mentor.</p>
+                        <h3 className="text-xl font-semibold mb-2">Get your mentor</h3>
+                        <p className="text-gray-600">We connect you with an IITian who will help you in your journey</p>
                     </div>
                     
                     {/* Step 3 */}

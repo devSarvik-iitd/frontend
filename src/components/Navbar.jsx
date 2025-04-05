@@ -2,14 +2,16 @@ import { useState } from "react";
 import { Link } from "react-scroll";
 import { Menu, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
+  const { user } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
-  const navigateToLogin = () =>{
+  const navigateToLogin = () => {
     navigate('/login');
   }
-  const navigateToRegister = () =>{
+  const navigateToRegister = () => {
     navigate('/register');
   }
   return (
@@ -18,7 +20,7 @@ const Navbar = () => {
         <Link to="home" smooth duration={500} className="text-2xl font-bold text-blue-600 cursor-pointer">
           TheNexStep
         </Link>
-        
+
         {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="text-gray-800 focus:outline-none">
@@ -46,14 +48,17 @@ const Navbar = () => {
         </div>
 
         {/* Login & Signup Buttons */}
-        <div className="hidden md:flex space-x-4">
-          <button onClick={navigateToLogin} className="bg-gray-200 hover:cursor-pointer text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
-            Login
-          </button>
-          <button onClick={navigateToRegister} className="bg-blue-600 hover:cursor-pointer text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
-            Signup
-          </button>
-        </div>
+        {!user && (
+          <div className="hidden md:flex space-x-4">
+            <button onClick={navigateToLogin} className="bg-gray-200 hover:cursor-pointer text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
+              Login
+            </button>
+            <button onClick={navigateToRegister} className="bg-blue-600 hover:cursor-pointer text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
+              Signup
+            </button>
+          </div>
+        )}
+
       </div>
 
       {/* Mobile Menu */}
@@ -75,14 +80,14 @@ const Navbar = () => {
             Contact
           </Link>
           {/* Mobile Login & Signup Buttons */}
-          <div className="mt-4 flex flex-col space-y-2">
+         {!user &&( <div className="mt-4 flex flex-col space-y-2">
             <button onClick={navigateToLogin} className="bg-gray-200 text-gray-800 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
               Login
             </button>
             <button onClick={navigateToRegister} className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
               Signup
             </button>
-          </div>
+          </div>)}
         </div>
       )}
     </nav>

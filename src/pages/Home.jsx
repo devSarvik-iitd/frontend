@@ -8,23 +8,33 @@ import WhyChooseUs from '../components/Home/WhyChooseUs';
 import HeroSection from '../components/Home/HeroSection';
 import Contact from '../components/Home/Contact';
 import Footer from '../components/Footer';
+import WhyMentorship from '../components/Home/WhyMentorship';
+import { useNavigate } from 'react-router-dom';
+
 export default function Home() {
   const { user } = useAuth();
-  
-  
+  const navigate = useNavigate();
+  const redirectToDashboard = () =>{
+    navigate("/dashboard");
+  }
+
   return (
     <>
-      <h1 className="text-4xl">
-        {user ? <span>Welcome, {user.firstName}!</span> : ""}
-      </h1>
-    <HeroSection/>
-    <WhyChooseUs/>
-    <About/>
-    <HowItWorks/>
-    <Testimonials/>
-    <PricingSection/>
-    <Contact/>
-    <Footer/>
+      <div className="w-full flex justify-end px-4 py-2 sm:px-6 lg:px-8">
+        <h1 className="text-xl text-left m-0 p-0">
+          {user ? <span onClick={redirectToDashboard} className='hover:cursor-pointer'>Welcome, {user.displayName}!</span> : ""}
+        </h1>
+      </div>
+
+      <HeroSection />
+      <WhyMentorship />
+      <About />
+      <WhyChooseUs />
+      <HowItWorks />
+      <Testimonials />
+      <PricingSection />
+      <Contact />
+      <Footer />
     </>
   )
 }

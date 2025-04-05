@@ -3,13 +3,13 @@ import React from "react";
 const testimonials = [
   {
     name: "Aman, JEE Aspirant",
-    image: "https://randomuser.me/api/portraits/men/32.jpg",
+    //image: "https://randomuser.me/api/portraits/men/32.jpg",
     review:
       "Thanks to this mentorship, I improved my JEE rank from 20,000 to under 5,000! Highly recommend!",
   },
   {
     name: "Neha, Class 12 Student",
-    image: "https://randomuser.me/api/portraits/women/44.jpg",
+    //image: "https://randomuser.me/api/portraits/women/44.jpg",
     review:
       "My confidence in Physics improved a lot after just 3 sessions with my mentor.",
   },
@@ -27,11 +27,11 @@ const Testimonials = () => {
               className="bg-gray-50 p-6 rounded-lg shadow-md"
             >
               <div className="flex items-center mb-4">
-                <img
+                {/* <img
                   src={testimonial.image}
                   alt={testimonial.name}
                   className="w-12 h-12 rounded-full mr-4"
-                />
+                /> */}
                 <div>
                   <h4 className="font-semibold">{testimonial.name}</h4>
                   <div className="flex text-yellow-400">

@@ -24,7 +24,7 @@ export default function Contact() {
             <h3 className="text-xl font-semibold mb-4">Get in Touch</h3>
             <p className="text-gray-600 mb-6">Have questions? Reach out to us and we'll get back to you as soon as possible.</p>
             <div className="mb-4">
-              <a href="https://wa.me/919876543210" className="flex items-center text-green-600 hover:text-green-700">
+              <a href="https://wa.me/917982416910" className="flex items-center text-green-600 hover:text-green-700">
                 <i className="fab fa-whatsapp text-2xl mr-3"></i>
                 <span>Chat with us on WhatsApp</span>
               </a>
