@@ -1,54 +1,76 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import config from '../config';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const LoginPage = () => {
-  // Google client ID - replace this with your own client ID from Google Developer Console
-  const clientId = '632224802103-8sssksmpm4i3pfiag2ojbi1n8u10r2if.apps.googleusercontent.com';
+    const navigate = useNavigate();
+    const { user, login } = useAuth();
+    const [redirecting, setRedirecting] = useState(false);
 
-  // This function is called when the Google login is successful
-  const handleLoginSuccess = async (response) => {
-    try {
-      // Send the received Google token to your backend API
-      const { data } = await axios.post(`${config.baseURL}/auth/login`, {
-        token: response.credential,
-      });
+    const clientId = '632224802103-8sssksmpm4i3pfiag2ojbi1n8u10r2if.apps.googleusercontent.com';
 
-      console.log('Backend response:', data);
+    // If user is already logged in, show message and redirect after delay
+    useEffect(() => {
+        if (user) {
+            setRedirecting(true);
+            const timer = setTimeout(() => {
+                navigate('/dashboard');
+            }, 3000);
 
-      // You can handle further redirection or state management here
-      // For example, redirect to the homepage or set user data in state
-    } catch (error) {
-      console.error('Error during login:', error);
-      // Handle any errors, like showing an alert or redirecting to an error page
-    }
-  };
+            return () => clearTimeout(timer); // cleanup
+        }
+    }, [user, navigate]);
 
-  // This function is called when the Google login fails
-  const handleLoginFailure = (error) => {
-    console.error('Google login failed:', error);
-    // Handle the error as needed (e.g., show an alert or retry)
-  };
+    const handleLoginSuccess = async (response) => {
+        try {
+            const { data } = await axios.post(`${config.baseURL}/auth/login`, {
+                token: response.credential,
+            }, {
+                withCredentials: true,
+            });
 
-  useEffect(() => {
-    // If you're using GoogleOAuthProvider at a higher level in your app, you can remove this from here
-    // It ensures that your Google client is ready for use
-  }, []);
+            console.log('Backend response:', data);
 
-  return (
-    <GoogleOAuthProvider clientId={clientId}>
-      <div className="login-container">
-        <h2>Login Page</h2>
-        <div className="google-login">
-          <GoogleLogin
-            onSuccess={handleLoginSuccess}
-            onError={handleLoginFailure}
-          />
-        </div>
-      </div>
-    </GoogleOAuthProvider>
-  );
+            if (data.message === "Login successful") {
+                await login(); // fetch and set user context
+                navigate('/dashboard');
+            }
+
+            if (data.message === "User does not exist") {
+                const userData = data.userInfo;
+                localStorage.setItem('pendingGoogleUser', JSON.stringify(userData));
+                navigate('/register');
+            }
+
+        } catch (error) {
+            console.error('Error during login:', error);
+        }
+    };
+
+    const handleLoginFailure = (error) => {
+        console.error('Google login failed:', error);
+    };
+
+    return (
+        <GoogleOAuthProvider clientId={clientId}>
+            <div className="login-container">
+                <h2>Login Page</h2>
+                {redirecting ? (
+                    <p>✅ Already logged in, redirecting to dashboard...</p>
+                ) : (
+                    <div className="google-login">
+                        <GoogleLogin
+                            onSuccess={handleLoginSuccess}
+                            onError={handleLoginFailure}
+                        />
+                    </div>
+                )}
+            </div>
+        </GoogleOAuthProvider>
+    );
 };
 
 export default LoginPage;
