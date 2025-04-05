@@ -1,7 +1,7 @@
 import { useAuth } from "../context/AuthContext";
 
 const Dashboard = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, logout } = useAuth();
 
   if (loading) return <p className="text-center mt-8 text-gray-500">Loading...</p>;
   if (!user) return <p className="text-center mt-8 text-red-500">User not logged in</p>;
@@ -37,6 +37,13 @@ const Dashboard = () => {
           className="mt-6 bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 transition"
         >
           Go to Dashboard
+        </button>
+
+        <button
+          onClick={logout}
+          className="mt-2 bg-red-500 hover:cursor-pointer text-white px-4 py-2 rounded-lg shadow hover:bg-red-600 transition"
+        >
+          Logout
         </button>
       </div>
     </div>

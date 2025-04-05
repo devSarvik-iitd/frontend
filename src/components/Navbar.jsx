@@ -14,10 +14,13 @@ const Navbar = () => {
   const navigateToRegister = () => {
     navigate('/register');
   }
+  const navigateToHome = () => {
+    navigate('/');
+  }
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-6 py-3 flex justify-between items-center">
-        <Link to="home" smooth duration={500} className="text-2xl font-bold text-blue-600 cursor-pointer">
+        <Link to="home" onClick={navigateToHome} smooth duration={500} className="text-2xl font-bold text-blue-600 cursor-pointer">
           TheNexStep
         </Link>
 
