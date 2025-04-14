@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState('');
   // Helper to get cookie by name
   const getCookie = (name) => {
     const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
@@ -35,6 +36,7 @@ export const AuthProvider = ({ children }) => {
     } catch (err) {
       console.error("Fetch error:", err);
       setError(err.message);
+      setMessage("Invalid or expired session")
       setUser(null);
     } finally {
       setLoading(false);
@@ -59,6 +61,22 @@ export const AuthProvider = ({ children }) => {
       });
 
       if (!res.ok) throw new Error("Failed to logout");
+      if(res.ok)setMessage("Logout Successful")
+      setUser(null);
+      // Optionally: localStorage.removeItem("user");
+    } catch (error) {
+      console.error("Logout error:", error);
+      setError("Logout failed");
+    }
+  };
+  const logoutall = async () => {
+    try {
+      const res = await fetch(`${config.baseURL}/user/logoutall`, {
+        method: "POST",
+        credentials: "include",
+      });
+      if(res.ok) setMessage("Logged out from all Devices");
+      if (!res.ok) throw new Error("Failed to logout");
 
       setUser(null);
       // Optionally: localStorage.removeItem("user");
@@ -78,6 +96,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated: !!user,
         login,
         logout,
+        logoutall
       }}
     >
       {children}

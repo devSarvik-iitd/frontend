@@ -11,8 +11,8 @@ const PricingSection = () => {
       name: "Basic",
       prices: {
         1: 1399,
-        3: 4299,
-        6: 7999,
+        3: 3999,
+        6: 7799,
         12: 13999,
       },
       features: [
@@ -28,7 +28,7 @@ const PricingSection = () => {
       name: "Standard",
       prices: {
         1: 2499,
-        3: 7799,
+        3: 7299,
         6: 13999,
         12: 24999,
       },
@@ -47,7 +47,7 @@ const PricingSection = () => {
       name: "Premium",
       prices: {
         1: 4799,
-        3: 14599,
+        3: 13999,
         6: 24999,
         12: 43999,
       },
@@ -69,12 +69,12 @@ const PricingSection = () => {
         <h2 className="text-3xl font-bold text-center mb-12">Choose Your Plan</h2>
 
         {/* Duration Tabs */}
-        <div className="flex justify-center mb-8">
+        <div className="flex justify-center mb-8 ">
           <div className="inline-flex bg-white rounded-lg shadow p-1">
             {durations.map((duration) => (
               <button
                 key={duration}
-                className={`px-4 py-2 rounded-md duration-tab ${
+                className={`px-4 py-2 hover:cursor-pointer hover:scale-105 transition-all duration-300 ease-in-out rounded-md duration-tab ${
                   selectedDuration === duration ? "bg-blue-600 text-white" : ""
                 }`}
                 onClick={() => setSelectedDuration(duration)}
