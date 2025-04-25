@@ -3,17 +3,16 @@ import { useState } from "react";
 const PricingSection = () => {
   const [selectedDuration, setSelectedDuration] = useState(1);
 
-  const durations = [1, 3, 6, 12];
+  const durations = [1, 3, 6];
 
   const plans = [
     {
-      tier: "SILVER",
-      name: "Basic",
+      tier: "GOLD",
+      name: "Standard",
       prices: {
         1: 1399,
         3: 3999,
         6: 7799,
-        12: 13999,
       },
       features: [
         "1 session/week",
@@ -24,13 +23,12 @@ const PricingSection = () => {
       btnColor: "bg-gray-100 hover:bg-gray-200",
     },
     {
-      tier: "GOLD",
-      name: "Standard",
+      tier: "PLATINUM",
+      name: "Premium",
       prices: {
         1: 2499,
         3: 7299,
         6: 13999,
-        12: 24999,
       },
       features: [
         "2 sessions/week",
@@ -42,25 +40,24 @@ const PricingSection = () => {
       btnColor: "bg-yellow-400 hover:bg-yellow-500",
       highlight: true,
     },
-    {
-      tier: "PLATINUM",
-      name: "Premium",
-      prices: {
-        1: 4799,
-        3: 13999,
-        6: 24999,
-        12: 43999,
-      },
-      features: [
-        "4 sessions/week",
-        "Chat support",
-        "All study materials",
-        "Weekly mock tests",
-        "Personalized strategy",
-      ],
-      bgColor: "bg-purple-100",
-      btnColor: "bg-purple-600 hover:bg-purple-700",
-    },
+    // {
+    //   tier: "PLATINUM",
+    //   name: "Premium",
+    //   prices: {
+    //     1: 4799,
+    //     3: 13999,
+    //     6: 24999,
+    //   },
+    //   features: [
+    //     "4 sessions/week",
+    //     "Chat support",
+    //     "All study materials",
+    //     "Weekly mock tests",
+    //     "Personalized strategy",
+    //   ],
+    //   bgColor: "bg-purple-100",
+    //   btnColor: "bg-purple-600 hover:bg-purple-700",
+    // },
   ];
 
   return (
@@ -86,18 +83,18 @@ const PricingSection = () => {
         </div>
 
         {/* Pricing Cards */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="flex flex-col items-center justify-center sm:flex-row gap-28">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`bg-white p-8 rounded-xl shadow-lg border ${
+              className={`bg-white hover:scale-110 transition-all duration-200 ease-in-out hover:cursor-pointer p-8 w-[30%] rounded-xl shadow-lg border ${
                 plan.highlight
-                  ? "border-2 border-yellow-400 transform md:scale-105 relative"
+                  ? "border-2 border-yellow-400 transform relative"
                   : "border-gray-200"
               }`}
             >
               {plan.highlight && (
-                <div className="absolute top-0 right-0 bg-yellow-400 text-yellow-900 px-3 py-1 text-xs font-bold rounded-bl-lg">
+                <div className="absolute top-0 right-0 bg-yellow-400 text-yellow-900 px-3 py-1 text-xs font-bold rounded-bl-lg rounded-tr-lg">
                   POPULAR
                 </div>
               )}

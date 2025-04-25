@@ -13,6 +13,7 @@ import PrivacyPolicy from './pages/policypages/PrivacyPolicy'
 import TermsAndConditions from './pages/policypages/TermsAndConditions'
 import CancellationAndRefund from './pages/policypages/CancellationAndRefund'
 import ShippingAndDelivery from './pages/policypages/ShippingAndDelivery'
+import CoursePayment from './pages/CoursePayment'
 
 function App() {
 
@@ -33,6 +34,7 @@ function App() {
           <Route path="/tncs" element={<TermsAndConditions />} />
           <Route path="/refunds" element={<CancellationAndRefund />} />
           <Route path="/shipping" element={<ShippingAndDelivery />} />
+          <Route path="/payment" element={<CoursePayment />} />
 
         </Routes>
       </BrowserRouter>
